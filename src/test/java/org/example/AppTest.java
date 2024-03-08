@@ -1,38 +1,25 @@
 package org.example;
 
-import junit.framework.Test;
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+import java.util.EmptyStackException;
+
+public class AppTest extends TestCase {
+    public void testPushAndPop() {
+        MyStack<Integer> testStack = new MyStack<>();
+        testStack.push(5);
+        testStack.push(10);
+        assertEquals((Integer)10, testStack.pop());
+        assertEquals((Integer)5, testStack.pop());
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    public void testPopEmptyStack() {
+        MyStack<Integer> testStack = new MyStack<>();
+        try {
+            testStack.pop();
+            fail("Expected an EmptyStackException to be thrown");
+        } catch (EmptyStackException e) {
+        }
     }
 }
+
