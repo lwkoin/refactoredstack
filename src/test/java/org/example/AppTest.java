@@ -21,5 +21,29 @@ public class AppTest extends TestCase {
         } catch (EmptyStackException e) {
         }
     }
+
+    public void testIsEmptyTrue()
+    {
+        MyStack<Integer> testStack = new MyStack<>();
+        assertTrue( testStack.isEmpty() );
+    }
+    public void testIsEmptyFalse()
+    {
+        MyStack<Integer> testStack = new MyStack<>();
+        testStack.push(5);
+        assertFalse( testStack.isEmpty() );
+    }
+
+    public void testSize()
+    {
+        MyStack<Integer> testStack = new MyStack<>();
+        testStack.push(5);
+        testStack.push(6);
+        testStack.push(7);
+        testStack.push(8);
+        testStack.push(9);
+        testStack.push(10);
+        assertEquals(6, testStack.size());
+    }
 }
 
